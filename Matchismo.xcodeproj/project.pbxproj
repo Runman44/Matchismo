@@ -25,6 +25,7 @@
 		BBB1229C18AACACC00C5A98A /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1229B18AACACC00C5A98A /* PlayingCard.m */; };
 		BBB1229F18AACB2100C5A98A /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1229E18AACB2100C5A98A /* Deck.m */; };
 		BBB122A218AACB4100C5A98A /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB122A118AACB4000C5A98A /* PlayingCardDeck.m */; };
+		BBC8101118B1592700340699 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8101018B1592700340699 /* CardMatchingGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		BBB1229E18AACB2100C5A98A /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		BBB122A018AACB4000C5A98A /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		BBB122A118AACB4000C5A98A /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		BBC8100F18B1592700340699 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardMatchingGame.h; path = Model/CardMatchingGame.h; sourceTree = "<group>"; };
+		BBC8101018B1592700340699 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardMatchingGame.m; path = Model/CardMatchingGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,8 @@
 		BBB1229918AAC55A00C5A98A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BBC8100F18B1592700340699 /* CardMatchingGame.h */,
+				BBC8101018B1592700340699 /* CardMatchingGame.m */,
 				BBB1229618AAC50200C5A98A /* Card.h */,
 				BBB1229718AAC50200C5A98A /* Card.m */,
 				BBB1229A18AACACC00C5A98A /* PlayingCard.h */,
@@ -282,6 +287,7 @@
 				BB4AD7C118AAA11B00BBC089 /* CardGameViewController.m in Sources */,
 				BB4AD7B718AAA11B00BBC089 /* main.m in Sources */,
 				BBB1229C18AACACC00C5A98A /* PlayingCard.m in Sources */,
+				BBC8101118B1592700340699 /* CardMatchingGame.m in Sources */,
 				BBB122A218AACB4100C5A98A /* PlayingCardDeck.m in Sources */,
 				BBB1229F18AACB2100C5A98A /* Deck.m in Sources */,
 				BBB1229818AAC50200C5A98A /* Card.m in Sources */,

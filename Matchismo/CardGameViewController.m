@@ -32,7 +32,7 @@
         [sender setTitle:@"" forState:(UIControlStateNormal)];
         self.flipCount++;
     } else {
-        Card *card = self.deck.drawRandomCard;
+        Card *card = [self.deck drawRandomCard];
         if (card){
         [sender setBackgroundImage:([UIImage imageNamed:@"cardfront"])
                           forState:(UIControlStateNormal)];
@@ -46,8 +46,12 @@
 }
 
 - (Deck *)deck {
-    if(!_deck) _deck = [[PlayingCardDeck alloc] init];
+    if(!_deck) _deck = [self createDeck];
     return _deck;
+}
+
+- (Deck *)createDeck{
+    return [[PlayingCardDeck alloc] init];
 }
 
 
