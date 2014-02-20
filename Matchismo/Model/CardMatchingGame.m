@@ -21,6 +21,11 @@
     return _cards;
 }
 
+- (NSUInteger) chosenType{
+    if(!_chosenType) _chosenType = 0;
+    return _chosenType;
+}
+
 - (instancetype) initWithCardCount:(NSUInteger) count usingDeck:(Deck *)deck{
     
     self = [super init];
@@ -50,29 +55,38 @@ static const int COST_TO_CHOOSE = 1;
 - (void) chooseCardAtIndex:(NSUInteger)index{
     
     Card *card = [self cardAtIndex:index];
+    NSMutableArray *cards = [NSMutableArray array];
     
     if (!card.isMatched){
         if (card.isChosen){
             card.chosen = NO;
         } else {
             for (Card *otherCard in self.cards){
-              if (otherCard.isChosen && !otherCard.isMatched){
-                  int matchScore = [card match:@[otherCard]];
-                  if (matchScore) {
-                      self.score += matchScore * MATCH_BONUS;
-                      card.matched = YES;
-                      otherCard.matched = YES;
-                  } else {
-                      self.score -= MISMATCH_PENALTY;
-                      otherCard.chosen = NO;
-                  }
-                  break;
-              }
+               
+                    if (otherCard.isChosen && !otherCard.isMatched){
+                        
+                        [cards addObject:otherCard];
+                    }
+                 if((self.chosenType == 0 && [cards count] == 1) || (self.chosenType == 1 && [cards count] == 2)){
+                    int matchScore = [card match:cards];
+                    if (matchScore) {
+                        self.score += matchScore * MATCH_BONUS;
+                        card.matched = YES;
+                        for (Card *card in cards) {
+                            card.matched = YES;
+                        }
+                    } else {
+                        self.score -= MISMATCH_PENALTY;
+                        for (Card *card in cards) {
+                            card.chosen = NO;
+                        }
+                    }
+                    break;
+                }
             }
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
         }
-        
     }
     
     

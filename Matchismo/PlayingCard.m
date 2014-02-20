@@ -49,13 +49,18 @@
 - (int)match:(NSArray *)otherCards
 {
     int score = 0;
-    
-    
-    
-    for(Card *card in otherCards){
-        if([card.contents isEqualToString:self.contents]){
-            score = 1;
-        }
+    NSMutableSet *setSuit = [[NSMutableSet alloc]initWithObjects:self.suit, nil];
+    NSMutableSet *setRank = [[NSMutableSet alloc]initWithObjects:[NSNumber numberWithInteger:self.rank], nil];
+
+    for (PlayingCard *otherCard in otherCards){
+        [setSuit addObject:otherCard.suit];
+        [setRank addObject:[NSNumber numberWithInteger:otherCard.rank]];
+    }
+    if ([setSuit count] != [otherCards count] +1){
+        score = 1;
+    }
+    if ([setRank count] != [otherCards count] +1){
+        score = 4;
     }
     return score;
 }
