@@ -30,7 +30,6 @@
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
-    [self updateHistoryUI];
     self.typeGame.userInteractionEnabled = NO;
 }
 
@@ -45,10 +44,6 @@
     self.game.chosenType = chosenType;
 }
 
-- (void)updateHistoryUI{
-    self.historyLabel.text = [NSString stringWithFormat:@"test"];
-}
-
 - (void)updateUI{
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
@@ -58,6 +53,23 @@
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
+    if (self.game) {
+        NSString *description = @"";
+        if ([self.game.lastChosenCards count]) {
+            NSMutableArray *cardContents = [NSMutableArray array];
+            for (Card *card in self.game.lastChosenCards) {
+                [cardContents addObject:card.contents];
+            }
+            description = [cardContents componentsJoinedByString:@" "];
+        }
+        if (self.game.lastScore > 0) {
+            description = [NSString stringWithFormat:@"Matched %@ for %d points.", description, self.game.lastScore];
+        } else if (self.game.lastScore < 0) {
+            
+            description = [NSString stringWithFormat:@"%@ don’t match! %d point penalty!", description, -self.game.lastScore];
+        }
+        self.historyLabel.text = description;
+        }
 }
 
 - (NSString *)titleForCard:(Card *)card{
