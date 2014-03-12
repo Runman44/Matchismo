@@ -31,7 +31,6 @@
 - (instancetype) initWithCardCount:(NSUInteger) count usingDeck:(Deck *)deck{
     
     self = [super init];
-    
     if(self){
         for (int i = 0; i < count; i++){
             Card *card = [deck drawRandomCard];
@@ -53,6 +52,8 @@
 static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
+static const int TWO_CARD_GAME = 0;
+static const int THREE_CARD_GAME = 1;
 
 - (void) chooseCardAtIndex:(NSUInteger)index{
     
@@ -63,6 +64,7 @@ static const int COST_TO_CHOOSE = 1;
         if (card.isChosen){
             card.chosen = NO;
             self.lastChosenCards = nil;
+            self.lastScore = 0;
         } else {
             for (Card *otherCard in self.cards){
                
@@ -71,7 +73,7 @@ static const int COST_TO_CHOOSE = 1;
                         self.lastChosenCards = [cards arrayByAddingObject:card];
                         self.lastScore = 0;
                     }
-                 if((self.chosenType == 0 && [cards count] == 1) || (self.chosenType == 1 && [cards count] == 2)){
+                 if(([cards count] == 1) || ([cards count] == 2)){
                    
                     int matchScore = [card match:cards];
                     if (matchScore) {

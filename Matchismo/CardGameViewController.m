@@ -7,7 +7,6 @@
 //
 
 #import "CardGameViewController.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
@@ -16,7 +15,6 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *historyLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *typeGame;
 @end
 
 @implementation CardGameViewController
@@ -30,18 +28,11 @@
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
-    self.typeGame.userInteractionEnabled = NO;
 }
 
 - (IBAction)touchDealButton:(UIButton *)sender {
     _game = nil;
     [self updateUI];
-    self.typeGame.userInteractionEnabled = YES;
-}
-
-- (IBAction)touchSwitchButton:(UISegmentedControl *)sender {
-    int chosenType = [sender selectedSegmentIndex];
-    self.game.chosenType = chosenType;
 }
 
 - (void)updateUI{
@@ -73,6 +64,7 @@
 }
 
 - (NSString *)titleForCard:(Card *)card{
+    NSLog(@"%@",card.contents);
     return card.isChosen ? card.contents : @"";
 }
 
@@ -80,8 +72,8 @@
     return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
 }
 
-- (Deck *)createDeck{
-    return [[PlayingCardDeck alloc] init];
+- (Deck *)createDeck{ //abstract
+    return nil;
 }
 
 
