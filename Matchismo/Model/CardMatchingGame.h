@@ -12,7 +12,7 @@
 @interface CardMatchingGame : NSObject
 
 @property (nonatomic, readonly) NSInteger score;
-@property (nonatomic) NSUInteger chosenType;
+@property (nonatomic) NSUInteger maxMatchingCards;
 @property (nonatomic, readonly) NSArray *lastChosenCards;
 @property (nonatomic, readonly) NSInteger lastScore;
 

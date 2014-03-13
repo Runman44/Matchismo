@@ -10,8 +10,16 @@
 
 @interface SetCard : Card
 
-@property (nonatomic) NSString *suit;
+@property (nonatomic) NSString *contents;
 
-+ (NSArray *)validSuits;
+@property (strong, nonatomic) NSString *color;
+@property (strong, nonatomic) NSString *symbol;
+@property (strong, nonatomic) NSString *shading;
+@property (nonatomic) NSUInteger number;
+
++ (NSArray *)validColors;
++ (NSArray *)validSymbols;
++ (NSArray *)validShadings;
++ (NSUInteger)maxNumber;
 
 @end

@@ -20,4 +20,12 @@
     return [[PlayingCardDeck alloc]init];
 }
 
+- (NSString *)titleForCard:(Card *)card{
+    return card.isChosen ? card.contents : @"";
+}
+
+- (UIImage *)backgroundImageForCard:(Card *)card{
+    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+}
+
 @end

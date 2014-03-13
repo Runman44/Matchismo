@@ -44,6 +44,10 @@
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     }
+    [self history];
+}
+
+- (void)history{
     if (self.game) {
         NSString *description = @"";
         if ([self.game.lastChosenCards count]) {
@@ -60,16 +64,15 @@
             description = [NSString stringWithFormat:@"%@ don’t match! %d point penalty!", description, -self.game.lastScore];
         }
         self.historyLabel.text = description;
-        }
+    }
 }
 
 - (NSString *)titleForCard:(Card *)card{
-    NSLog(@"%@",card.contents);
-    return card.isChosen ? card.contents : @"";
+    return nil; //abstract
 }
 
 - (UIImage *)backgroundImageForCard:(Card *)card{
-    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+    return nil; //abstract
 }
 
 - (Deck *)createDeck{ //abstract

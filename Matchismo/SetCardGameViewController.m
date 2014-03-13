@@ -19,5 +19,12 @@
     
     return [[SetCardDeck alloc]init];
 }
+- (NSString *)titleForCard:(Card *)card{
+    return card.contents;
+}
+
+- (UIImage *)backgroundImageForCard:(Card *)card{
+    return [UIImage imageNamed:card.isChosen ? @"cardselect" : @"cardfront"];
+}
 
 @end

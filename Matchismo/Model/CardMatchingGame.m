@@ -23,10 +23,6 @@
     return _cards;
 }
 
-- (NSUInteger) chosenType{
-    if(!_chosenType) _chosenType = 0;
-    return _chosenType;
-}
 
 - (instancetype) initWithCardCount:(NSUInteger) count usingDeck:(Deck *)deck{
     
@@ -73,7 +69,7 @@ static const int THREE_CARD_GAME = 1;
                         self.lastChosenCards = [cards arrayByAddingObject:card];
                         self.lastScore = 0;
                     }
-                 if(([cards count] == 1) || ([cards count] == 2)){
+                 if(([cards count] + 1 == self.maxMatchingCards )){
                    
                     int matchScore = [card match:cards];
                     if (matchScore) {
@@ -98,26 +94,18 @@ static const int THREE_CARD_GAME = 1;
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
         }
-        
-        
-        
+    
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+}
+
+- (NSUInteger)maxMatchingCards
+{
+    Card *card = [self.cards firstObject];
+    if (_maxMatchingCards < card.numberOfMatchingCards) {
+        _maxMatchingCards = card.numberOfMatchingCards;
+    }
+    return _maxMatchingCards;
 }
 
 

@@ -13,5 +13,7 @@
 
 // protected
 - (Deck *)createDeck; //abstract
-    
+- (UIImage *)backgroundImageForCard:(Card *)card; //abstract
+- (NSString *)titleForCard:(Card *)card; //abstract
+
 @end
