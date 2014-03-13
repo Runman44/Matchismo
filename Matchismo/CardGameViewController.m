@@ -14,7 +14,8 @@
 @property (nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *historyLabel;
+
+
 @end
 
 @implementation CardGameViewController
@@ -22,6 +23,11 @@
 - (CardMatchingGame *)game{
     if(!_game) _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count] usingDeck:[self createDeck]];
     return _game;
+}
+
+- (NSArray *)historyList{
+    if(!_historyList) _historyList = [[NSMutableArray alloc]init];
+    return _historyList;
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
@@ -39,7 +45,8 @@
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
-        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setAttributedTitle:[self titleForCard:card]
+                              forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -49,25 +56,31 @@
 
 - (void)history{
     if (self.game) {
-        NSString *description = @"";
+        NSAttributedString *description = [[NSAttributedString alloc] initWithString:@""];
         if ([self.game.lastChosenCards count]) {
             NSMutableArray *cardContents = [NSMutableArray array];
             for (Card *card in self.game.lastChosenCards) {
-                [cardContents addObject:card.contents];
+                [cardContents addObject:[self titleForCard:card]];
+               
             }
-            description = [cardContents componentsJoinedByString:@" "];
+            description = [[NSAttributedString alloc] initWithString:[cardContents componentsJoinedByString:@" "]];
+            NSLog(@"%@", description);
+           //description = [cardContents componentsJoinedByString:@" "];
         }
+         /**
         if (self.game.lastScore > 0) {
             description = [NSString stringWithFormat:@"Matched %@ for %d points.", description, self.game.lastScore];
         } else if (self.game.lastScore < 0) {
             
             description = [NSString stringWithFormat:@"%@ don’t match! %d point penalty!", description, -self.game.lastScore];
         }
-        self.historyLabel.text = description;
+             **/
+        [self.historyList addObject: description];
+        self.historyLabel.attributedText = description;
     }
 }
 
-- (NSString *)titleForCard:(Card *)card{
+- (NSAttributedString  *)titleForCard:(Card *)card{
     return nil; //abstract
 }
 
