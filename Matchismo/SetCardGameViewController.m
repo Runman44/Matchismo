@@ -9,6 +9,7 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "HistoryViewController.h"
 
 @interface SetCardGameViewController ()
 
@@ -66,6 +67,16 @@
 {
     [super viewDidLoad];
     [self updateUI];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showHistory"]) {
+        if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
+            [segue.destinationViewController setHistory:self.historyList];
+        }
+    }
 }
 
 @end

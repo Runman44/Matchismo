@@ -12,9 +12,4 @@
 
 @property (nonatomic, strong) NSArray *history;
 
-
-
-
-
-
 @end

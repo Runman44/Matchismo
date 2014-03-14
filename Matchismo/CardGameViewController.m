@@ -56,27 +56,25 @@
 
 - (void)history{
     if (self.game) {
-        NSAttributedString *description = [[NSAttributedString alloc] initWithString:@""];
+        NSString *description = @"";
         if ([self.game.lastChosenCards count]) {
             NSMutableArray *cardContents = [NSMutableArray array];
             for (Card *card in self.game.lastChosenCards) {
-                [cardContents addObject:[self titleForCard:card]];
-               
+                [cardContents addObject:card.contents];
             }
-            description = [[NSAttributedString alloc] initWithString:[cardContents componentsJoinedByString:@" "]];
-            NSLog(@"%@", description);
-           //description = [cardContents componentsJoinedByString:@" "];
+            description = [cardContents componentsJoinedByString:@" "];
+            
         }
-         /**
+        
         if (self.game.lastScore > 0) {
             description = [NSString stringWithFormat:@"Matched %@ for %d points.", description, self.game.lastScore];
         } else if (self.game.lastScore < 0) {
             
-            description = [NSString stringWithFormat:@"%@ don’t match! %d point penalty!", description, -self.game.lastScore];
+            description = [NSString stringWithFormat:@"%@ don’t match! %d point penalty!", description, self.game.lastScore];
         }
-             **/
+        
         [self.historyList addObject: description];
-        self.historyLabel.attributedText = description;
+        self.historyLabel.text = description;
     }
 }
 

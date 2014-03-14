@@ -84,7 +84,10 @@
             [setSymbol addObject:otherCard.symbol];
             [setShading addObject:otherCard.shading];
             [setNumber addObject:[NSNumber numberWithInteger:otherCard.number]];
-            if ([setColor count] == [otherCards count] +1 || ([setColor count] == 1 && [setSymbol count] == [otherCards count] +1) || ([setSymbol count] == 1 && [setShading count] == [otherCards count] +1) || ([setShading count] == 1 && [setNumber count] == [otherCards count] +1) || [setNumber count] == 1 ){
+            if (([setColor count] == [otherCards count] +1 || [setColor count] == 1)
+                && ([setSymbol count] == [otherCards count] +1 || [setSymbol count] == 1)
+                && ([setShading count] == [otherCards count] +1 || [setShading count] == 1)
+                && ([setNumber count] == [otherCards count] +1 || [setNumber count] == 1 )){
                 score = 4;
             }
         }

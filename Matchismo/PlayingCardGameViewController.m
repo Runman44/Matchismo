@@ -32,16 +32,18 @@
     return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
 }
 
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showHistory"]) {
         if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
-            [segue.destinationViewController setHistory:self.historyList];
+           [segue.destinationViewController setHistory:self.historyList];
         }
     }
 }
+
+
+
+
 
 @end
