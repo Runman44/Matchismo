@@ -9,7 +9,6 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
-#import "HistoryViewController.h"
 
 @interface SetCardGameViewController ()
 
@@ -69,14 +68,28 @@
     [self updateUI];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue
-                 sender:(id)sender
+
+
+- (void)updateUI
 {
-    if ([segue.identifier isEqualToString:@"showHistory"]) {
-        if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]) {
-            [segue.destinationViewController setHistory:self.historyList];
+    [super updateUI];
+   
+    NSMutableAttributedString *description = [self.historyLabel.attributedText mutableCopy];
+    
+    NSArray *setCards = [SetCard cardsFromText:description.string];
+    
+    if (setCards) {
+        for (SetCard *setCard in setCards) {
+            NSRange range = [description.string rangeOfString:setCard.contents];
+            if (range.location != NSNotFound) {
+                [description replaceCharactersInRange:range
+                                 withAttributedString:[self titleForCard:setCard]];
+            }
         }
+        
+        [self.historyLabel setAttributedText:description];
     }
 }
+
 
 @end

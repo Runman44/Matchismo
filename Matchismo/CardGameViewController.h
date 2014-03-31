@@ -12,7 +12,6 @@
 @interface CardGameViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *historyLabel;
-@property (strong, nonatomic) NSMutableArray *historyList;
 
 // protected
 - (Deck *)createDeck; //abstract

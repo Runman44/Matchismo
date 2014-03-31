@@ -246,75 +246,37 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeI-EN-2lF" customClass="PlayingCardView">
+                                <rect key="frame" x="140" y="71" width="88" height="118"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="S6r-73-fyX" appends="YES" id="Q9r-YO-11o"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="PlayingCard" id="zaQ-Hq-x5s"/>
                     <navigationItem key="navigationItem" title="PlayingCard" id="idq-RX-Ng1">
-                        <barButtonItem key="rightBarButtonItem" title="History" id="vTZ-ua-35D">
-                            <connections>
-                                <segue destination="d0Y-vM-G6m" kind="push" identifier="showHistory" id="Kc8-pn-tcv"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="History" id="vTZ-ua-35D"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="PlayingCardView" destination="qeI-EN-2lF" id="w6j-NV-cbm"/>
                         <outlet property="historyLabel" destination="MZp-nI-Fpl" id="aIN-u7-JfV"/>
                         <outlet property="scoreLabel" destination="D6e-WQ-Yo6" id="0Fi-tA-DmC"/>
-                        <outletCollection property="cardButtons" destination="wlr-JL-v4j" id="P4b-LG-1e9"/>
-                        <outletCollection property="cardButtons" destination="uXQ-mX-p7w" id="WT3-5U-sPf"/>
-                        <outletCollection property="cardButtons" destination="xME-EX-D39" id="TXJ-v7-m7g"/>
-                        <outletCollection property="cardButtons" destination="r60-Ag-M06" id="wYY-vJ-aVV"/>
-                        <outletCollection property="cardButtons" destination="BMb-S4-8HF" id="HOs-hv-EfO"/>
-                        <outletCollection property="cardButtons" destination="OAb-KO-iE0" id="WT7-KK-yFZ"/>
-                        <outletCollection property="cardButtons" destination="qMy-om-aQI" id="iQd-pc-bkn"/>
-                        <outletCollection property="cardButtons" destination="AUv-Gc-cte" id="QB1-3q-F5I"/>
-                        <outletCollection property="cardButtons" destination="cry-xZ-s5U" id="aAh-ep-ETF"/>
-                        <outletCollection property="cardButtons" destination="b6L-cU-h59" id="BWE-YR-zBr"/>
-                        <outletCollection property="cardButtons" destination="p63-cq-Pkl" id="Tlf-tR-oS8"/>
-                        <outletCollection property="cardButtons" destination="IOU-x7-Qry" id="Uab-dK-gdj"/>
-                        <outletCollection property="cardButtons" destination="SFR-Kz-0qX" id="TaX-87-i4A"/>
-                        <outletCollection property="cardButtons" destination="tDo-60-yPf" id="rRw-iv-po2"/>
-                        <outletCollection property="cardButtons" destination="beI-oC-xAC" id="rjV-59-dYd"/>
-                        <outletCollection property="cardButtons" destination="yWU-rQ-Xab" id="wJm-bJ-TEh"/>
-                        <outletCollection property="cardButtons" destination="u6S-wb-18D" id="5KY-zW-YhP"/>
-                        <outletCollection property="cardButtons" destination="VP9-vG-0Xp" id="0Jx-nb-sxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="S6r-73-fyX">
+                    <connections>
+                        <action selector="swipe:" destination="vXZ-lx-hvc" id="jkx-DD-lff"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1400" y="-762"/>
-        </scene>
-        <!--History View Controller - History-->
-        <scene sceneID="K3B-4J-iDr">
-            <objects>
-                <viewController id="d0Y-vM-G6m" customClass="HistoryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eqZ-Z7-1dX"/>
-                        <viewControllerLayoutGuide type="bottom" id="dAL-gU-BH3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="S83-eX-VCw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suq-fw-dco">
-                                <rect key="frame" x="20" y="88" width="280" height="251"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="History" id="vHN-RJ-HRC"/>
-                    <connections>
-                        <outlet property="historyTextView" destination="suq-fw-dco" id="PzO-zf-ROC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P6Y-0z-fHl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1897" y="-335"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5eJ-mQ-Xil">
@@ -327,8 +289,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="tkf-df-vCN" kind="relationship" relationship="viewControllers" id="Vl4-Rc-HwG"/>
-                        <segue destination="VEq-yn-ytP" kind="relationship" relationship="viewControllers" id="S81-da-6P0"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="WoU-TQ-V2m"/>
+                        <segue destination="llm-C0-Bod" kind="relationship" relationship="viewControllers" id="K9D-IX-Jj8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bw4-j5-VX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +310,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMJ-f7-c14">
-                                <rect key="frame" x="20" y="117" width="64" height="90"/>
+                                <rect key="frame" x="20" y="59" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -359,7 +321,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-hL-cQf">
-                                <rect key="frame" x="92" y="117" width="64" height="90"/>
+                                <rect key="frame" x="92" y="59" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -370,7 +332,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASz-W2-jSg">
-                                <rect key="frame" x="164" y="117" width="64" height="90"/>
+                                <rect key="frame" x="164" y="59" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -381,7 +343,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-Qq-Ngf">
-                                <rect key="frame" x="236" y="117" width="64" height="90"/>
+                                <rect key="frame" x="236" y="59" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -392,7 +354,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNf-Oj-8k7">
-                                <rect key="frame" x="92" y="215" width="64" height="90"/>
+                                <rect key="frame" x="92" y="157" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -403,7 +365,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQ3-UI-XdR">
-                                <rect key="frame" x="164" y="215" width="64" height="90"/>
+                                <rect key="frame" x="164" y="157" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -414,7 +376,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIr-yY-q1N">
-                                <rect key="frame" x="236" y="215" width="64" height="90"/>
+                                <rect key="frame" x="236" y="157" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -425,7 +387,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpX-Xw-egC">
-                                <rect key="frame" x="92" y="313" width="64" height="90"/>
+                                <rect key="frame" x="92" y="255" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -436,7 +398,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dn8-dU-5zb">
-                                <rect key="frame" x="164" y="313" width="64" height="90"/>
+                                <rect key="frame" x="164" y="255" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -447,7 +409,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCo-1e-b3B">
-                                <rect key="frame" x="236" y="313" width="64" height="90"/>
+                                <rect key="frame" x="236" y="255" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -458,7 +420,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-xw-PGN">
-                                <rect key="frame" x="20" y="215" width="64" height="90"/>
+                                <rect key="frame" x="20" y="157" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -469,7 +431,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRm-iD-h1F">
-                                <rect key="frame" x="20" y="313" width="64" height="90"/>
+                                <rect key="frame" x="20" y="255" width="64" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" backgroundImage="cardfront">
@@ -480,7 +442,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gp-DP-b4h">
-                                <rect key="frame" x="20" y="78" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -515,12 +477,9 @@
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="SetCard" id="9Lo-uK-BT7"/>
                     <navigationItem key="navigationItem" title="SetCard" id="KPd-cU-UJh">
-                        <barButtonItem key="rightBarButtonItem" title="History" id="NEc-9X-ERZ">
-                            <connections>
-                                <segue destination="d0Y-vM-G6m" kind="push" identifier="showHistory" id="Cr5-Ie-pQC"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="History" id="NEc-9X-ERZ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="historyLabel" destination="WOY-YX-JBM" id="6RJ-bR-pSj"/>
@@ -543,44 +502,6 @@
             </objects>
             <point key="canvasLocation" x="1408" y="-2"/>
         </scene>
-        <!--Navigation Controller - SetCard-->
-        <scene sceneID="DWy-EI-o1q">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VEq-yn-ytP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="SetCard" id="pg0-zp-1Rr"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ElE-hu-Xl0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="llm-C0-Bod" kind="relationship" relationship="rootViewController" id="ddj-Uo-wZc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iad-Il-Wng" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="882" y="-2"/>
-        </scene>
-        <!--Navigation Controller - PlayingCard-->
-        <scene sceneID="6eO-1t-bqW">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkf-df-vCN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PlayingCard" id="pJs-TQ-CJQ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wS2-mP-Nw5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Khc-EG-dCV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bu9-y2-vQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="882" y="-630"/>
-        </scene>
     </scenes>
     <resources>
         <image name="cardback" width="64" height="96"/>
@@ -591,7 +512,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Cr5-Ie-pQC"/>
-    </inferredMetricsTieBreakers>
 </document>
