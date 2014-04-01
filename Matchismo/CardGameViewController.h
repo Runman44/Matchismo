@@ -11,12 +11,9 @@
 
 @interface CardGameViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *historyLabel;
+@property (nonatomic) NSUInteger numberOfStartingCards;
 
 // protected
 - (Deck *)createDeck; //abstract
-- (UIImage *)backgroundImageForCard:(Card *)card; //abstract
-- (NSAttributedString  *)titleForCard:(Card *)card; //abstract
-- (void)updateUI;
 
 @end

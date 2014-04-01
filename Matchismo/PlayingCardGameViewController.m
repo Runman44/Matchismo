@@ -20,4 +20,11 @@
     return [[PlayingCardDeck alloc]init];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.numberOfStartingCards = 35;
+}
+
+
 @end
