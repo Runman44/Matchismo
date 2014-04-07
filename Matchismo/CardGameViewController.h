@@ -12,8 +12,14 @@
 @interface CardGameViewController : UIViewController
 
 @property (nonatomic) NSUInteger numberOfStartingCards;
+@property (nonatomic) CGSize maxCardSize;
 
 // protected
 - (Deck *)createDeck; //abstract
+- (UIView *)createViewForCard:(Card *)card;
+- (void)updateView:(UIView *)view forCard:(Card *)card;
+- (void)removeView:(UIView *)view forCard:(Card *)card;
+
+- (void)updateUI;
 
 @end

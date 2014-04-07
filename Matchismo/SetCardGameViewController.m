@@ -9,6 +9,7 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "SetCardView.h"
 
 @interface SetCardGameViewController ()
 
@@ -24,10 +25,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.numberOfStartingCards = 12;
+    self.numberOfStartingCards = 16;
+    self.maxCardSize = CGSizeMake(120.0, 120.0);
+    [self updateUI];
 }
 
+- (UIView *)createViewForCard:(Card *)card
+{
+    SetCardView *view = [[SetCardView alloc] init];
+    [self updateView:view forCard:card];
+    return view;
+}
 
-
+- (void)updateView:(UIView *)view forCard:(Card *)card
+{
+    if (![card isKindOfClass:[SetCard class]]) return;
+    if (![view isKindOfClass:[SetCardView class]]) return;
+    SetCard *setCard = (SetCard *)card;
+    SetCardView *setCardView = (SetCardView *)view;
+    setCardView.color = setCard.color;
+    setCardView.symbol = setCard.symbol;
+    setCardView.shading = setCard.shading;
+    setCardView.number = setCard.number;
+    
+    view.alpha = setCard.chosen ? 0.6 : 1.0;
+}
 
 @end

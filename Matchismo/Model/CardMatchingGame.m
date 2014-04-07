@@ -21,6 +21,9 @@
     return _cards;
 }
 
+- (NSUInteger) numberOfDealtCards{
+   return [self.cards count];
+}
 
 - (instancetype) initWithCardCount:(NSUInteger) count usingDeck:(Deck *)deck{
     

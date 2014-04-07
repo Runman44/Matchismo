@@ -44,18 +44,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qee-wG-3b9">
                                 <rect key="frame" x="0.0" y="49" width="320" height="388"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeI-EN-2lF" customClass="PlayingCardView">
-                                        <rect key="frame" x="116" y="303" width="88" height="118"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="S6r-73-fyX" appends="YES" id="Q9r-YO-11o"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +54,7 @@
                         <barButtonItem key="rightBarButtonItem" title="History" id="vTZ-ua-35D"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="PlayingCardView" destination="qeI-EN-2lF" id="w6j-NV-cbm"/>
+                        <outlet property="gridView" destination="Qee-wG-3b9" id="Trz-uq-kRl"/>
                         <outlet property="scoreLabel" destination="D6e-WQ-Yo6" id="0Fi-tA-DmC"/>
                     </connections>
                 </viewController>
@@ -138,7 +126,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ly0-qd-nrr">
                                 <rect key="frame" x="0.0" y="49" width="320" height="388"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
