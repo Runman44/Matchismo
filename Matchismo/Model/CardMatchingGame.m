@@ -11,6 +11,7 @@
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic) NSMutableArray *cards; //of cards
+@property (nonatomic) Deck* deck;
 @end
 
 
@@ -25,10 +26,28 @@
    return [self.cards count];
 }
 
+- (void)setIsDeckEmpty:(BOOL)isDeckEmpty{
+    _isDeckEmpty = isDeckEmpty;
+}
+
+- (void) drawCard{
+    Card *card = [self.deck drawRandomCard];
+    if(card){
+        [self setIsDeckEmpty:NO];
+        [self.cards addObject:card];
+    } else {
+       [self setIsDeckEmpty:YES]; 
+    }
+    
+}
+
+
+
 - (instancetype) initWithCardCount:(NSUInteger) count usingDeck:(Deck *)deck{
     
     self = [super init];
     if(self){
+        _deck = deck;
         for (int i = 0; i < count; i++){
             Card *card = [deck drawRandomCard];
             if(card){

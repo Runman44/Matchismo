@@ -51,4 +51,14 @@
     view.alpha = setCard.chosen ? 0.6 : 1.0;
 }
 
+- (void)removeView:(UIView *)view forCard:(Card *)card{
+    [UIView animateWithDuration:3.0 delay:0.0 options: UIViewAnimationOptionBeginFromCurrentState animations:^{ view.alpha = 0.0;} completion:^(BOOL fin) {
+        if(fin) {
+            [view removeFromSuperview];
+            [super removeView:view forCard:card];
+            [self updateUI];
+        }
+    }];
+}
+
 @end

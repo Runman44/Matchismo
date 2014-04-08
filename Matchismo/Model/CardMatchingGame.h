@@ -14,9 +14,10 @@
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic) NSUInteger maxMatchingCards;
 @property (nonatomic, readonly) NSUInteger numberOfDealtCards;
+@property (nonatomic, readonly) BOOL isDeckEmpty;
 
 - (instancetype) initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck;
-
+- (void) drawCard; 
 - (void) chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 

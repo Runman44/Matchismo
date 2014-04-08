@@ -53,10 +53,26 @@ return _grid;
 
 - (IBAction)touchDealButton:(UIButton *)sender {
     for (UIView *view in self.cardViews){
-     [view removeFromSuperview];
-    }
+    [UIView animateWithDuration:1.0 delay: 0.0 options: UIViewAnimationOptionBeginFromCurrentState animations:^{
+        
+            int x = (arc4random()%(int)(self.gridView.bounds.size.width*5)) - (int)self.gridView.bounds.size.width*2;
+            int y = self.gridView.bounds.size.height;
+            view.center = CGPointMake(x, -y);
+      
+    } completion:^(BOOL fin){
+//        for (UIView *view in self.cardViews){
+          [view removeFromSuperview];
+//        }
+    }];
+          }
+    
+//    for (UIView *view in self.cardViews){
+//        [view removeFromSuperview];
+//    }
     self.cardViews = nil;
     self.game = nil;
+    _addCards.alpha = 1;
+    _addCards.enabled = YES;
     [self updateUI];
 }
 
@@ -84,7 +100,10 @@ return _grid;
             [cardView addGestureRecognizer:tap];
             [self.cardViews addObject:cardView];
             viewIndex = [self.cardViews indexOfObject:cardView];
+            cardView.alpha = 0.0;
             [self.gridView addSubview:cardView];
+
+                [UIView animateWithDuration:3.0 delay:0.0 options: UIViewAnimationOptionBeginFromCurrentState animations:^{ cardView.alpha = 1.0;} completion:NULL];
             }
         } else {
             cardView = self.cardViews[viewIndex];
@@ -94,10 +113,19 @@ return _grid;
                 [self updateView:cardView forCard:card];
             }
         }
-        CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
-                                          inColumn:viewIndex % self.grid.columnCount];
-        frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
-        cardView.frame = frame;
+        self.grid.minimumNumberOfCells = [self.cardViews count];
+        for (NSUInteger viewIndex = 0; viewIndex < [self.cardViews count]; viewIndex++) {
+            CGRect frame = [self.grid frameOfCellAtRow:viewIndex / self.grid.columnCount
+                                              inColumn:viewIndex % self.grid.columnCount];
+            frame = CGRectInset(frame, frame.size.width * CARDSPACINGINPERCENT, frame.size.height * CARDSPACINGINPERCENT);
+            
+            [UIView animateWithDuration:0.5
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 ((UIView *)self.cardViews[viewIndex]).frame = frame;
+                             } completion:NULL];
+                    }
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
@@ -110,9 +138,18 @@ return _grid;
     }
 }
 
+const int NUMBER_OF_EXTRA_CARDS = 3;
+
 - (IBAction)addCard:(UIButton *)sender {
-    
-    
+    for (int i = 0; i < NUMBER_OF_EXTRA_CARDS; i++) {
+        [self.game drawCard];
+        
+    }
+    if (self.game.isDeckEmpty) {
+        sender.alpha = 0.5;
+        sender.enabled = NO;
+    }
+    [self updateUI];
 }
 
 - (UIView *)createViewForCard:(Card *)card //abstract
@@ -122,8 +159,6 @@ return _grid;
 
 - (void)removeView:(UIView *)view forCard:(Card *)card 
 {
-    // make this work ! 
-    [UIView animateWithDuration:5.0 delay:0.0 options: UIViewAnimationOptionBeginFromCurrentState animations:^{ view.alpha = 0.0;} completion:^(BOOL fin) { if(fin) [view removeFromSuperview]; }];
     [self.cardViews removeObject:view];
 }
 
