@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *cardViews;
 @property (weak, nonatomic) IBOutlet UIView *gridView;
 @property (nonatomic) Grid *grid;
+@property (weak, nonatomic) IBOutlet UIButton *addCards;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 
@@ -109,6 +110,11 @@ return _grid;
     }
 }
 
+- (IBAction)addCard:(UIButton *)sender {
+    
+    
+}
+
 - (UIView *)createViewForCard:(Card *)card //abstract
 {
     return nil;
@@ -116,7 +122,8 @@ return _grid;
 
 - (void)removeView:(UIView *)view forCard:(Card *)card 
 {
-    [view removeFromSuperview];
+    // make this work ! 
+    [UIView animateWithDuration:5.0 delay:0.0 options: UIViewAnimationOptionBeginFromCurrentState animations:^{ view.alpha = 0.0;} completion:^(BOOL fin) { if(fin) [view removeFromSuperview]; }];
     [self.cardViews removeObject:view];
 }
 

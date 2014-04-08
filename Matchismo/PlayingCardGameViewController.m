@@ -45,7 +45,18 @@
     PlayingCardView *playingCardView = (PlayingCardView *)view;
     playingCardView.rank = playingCard.rank;
     playingCardView.suit = playingCard.suit;
+    
+    if (playingCardView.faceup != playingCard.chosen) {
+        [UIView transitionWithView:view
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:nil
+                        completion:nil];
+    }
+    
     playingCardView.faceup = playingCard.chosen;
+    
+    
 }
 
 -(void) removeView:(UIView *)view forCard:(Card *)card{

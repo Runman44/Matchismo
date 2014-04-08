@@ -124,9 +124,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ly0-qd-nrr">
-                                <rect key="frame" x="0.0" y="49" width="320" height="388"/>
+                                <rect key="frame" x="0.0" y="49" width="320" height="376"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpP-MK-17d">
+                                <rect key="frame" x="20" y="433" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="+3 Cards">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addCard:" destination="llm-C0-Bod" eventType="touchUpInside" id="YBg-Ls-aNp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,6 +147,7 @@
                         <barButtonItem key="rightBarButtonItem" title="History" id="NEc-9X-ERZ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addCards" destination="FpP-MK-17d" id="SbA-Bn-MG2"/>
                         <outlet property="gridView" destination="Ly0-qd-nrr" id="rR9-7I-PU6"/>
                         <outlet property="scoreLabel" destination="9Gp-DP-b4h" id="Y00-3M-W2c"/>
                     </connections>
